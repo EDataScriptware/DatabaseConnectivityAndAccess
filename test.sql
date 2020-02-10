@@ -1,0 +1,8 @@
+DROP DATABASE IF EXISTS test;
+
+CREATE DATABASE test; 
+USE test;
+
+CREATE table world(id INT(6));
+
+INSERT INTO id VALUES (1);

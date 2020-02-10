@@ -1,0 +1,104 @@
+SOA (Service-Oriented Architecture)
+---------
+Presentation layer is what the client sees. 
+
+Service Layer is what sends to the client. 
+
+Business layer wraps up the package. 
+
+-----------
+
+Database Layer is what data store and can be any data store, XML, CSV, RSS, or proprietary structure.
+
+Data (Database) Layer consists of objects (in your favorite language)
+
+Only layer with SQL. 
+
+No output to console here. 
+
+JavaSript does not support access to database.
+
+Data Layer consists of objects mirror rows in the table of the databases - list of objects represents a table.
+
+EMPLOYEE(id, fName, lName) is equilivant to 
+. . .
+public class Employee { 
+	private int id;
+	private String fName;
+	private String lName
+}
+
+- - - - - - - - - - - 
+Business Layer makes sure everything performs all rules, business requirements, authorizations, and Security.
+
+Combines several data layer objects into one business object. 
+
+There is NO SQL in Business Layer. 
+
+NO output to console here. 
+
+------
+Presentation Layer
+
+Consists of code (of your favorite programming language)
+
+Full of objects received from business layer
+
+The only layer is the user's interface to the system (only used to interact with layer in this layer)
+
+Enter information and see result.
+
+Validate user input
+-------------------------------
+In this class... 
+
+Users don't exist - we only interact with the Database. 
+
+main is a disposable test of the data layer. 
+
+======================
+
+Database Driver
+- Driver is simply a small program - any company or individual can write a driver as long as they know the "rules" for the resource. there is positive and negative to this. 
+- Can be written in almost any language - 
+- If two people each write a driver to work with a particular resource, will they be the same? You can. 
+
+*IMPORTANT*
+There are three broad classifications of database drivers
+- DIRECT
+-- Low-level calls written by hand
+--- Considered not a driver
+-- Open pipe, send data, flush buffer, close pipe
+-- Heavily dependent on database server API
+-- Good because you have more control, accessibility/efficient
+-- Negative because a lot more work, more errors, if API changes so you must change it everytime.
+
+- NATIVE
+-- Not low-level but more vendor-specific
+-- Libraries loaded at runtime or compiled in
+-- Examples: PHP mysqli, php oci8, .NET mySQL, IBM db2, PHP mysql (PHP mysql is not used because of security problems)
+-- Good because less dependent, if one breaks not everything falls apart
+-- Bad because if you use a database language, then you have to download that database language version and etc (too specific). 
+
+- ABSTRACT
+-- Provides a common interface across supported DBMS
+-- Allows many third party vendor-specific features to be used on the database
+-- Not all vendor-specfici features may be implemented
+-- Java's JDBC or PHP's PDO
+
+Open Database Connectivity (ODBC)
+- Provides a common interface for any DBMS
+- Supports all platforms and almost all DBMS'
+-- and other data sources such as spreadsheets (apache poi apis) or csv file
+- Configured on each client machines
+
+The Microsoft Hierarchy
+- Standards evolve and are replaced with architectures
+-- DAO 1992 Microsoft Access/Jet (via Visual FoxPro)
+-- RDO 1995 MS Visual Basic 
+-- ADO 1996 with COM
+-- OLE DB   with DCOM
+(OLE is Object Linking and Embedding)
+
+Java Driver Types
+- will be covered next Monday

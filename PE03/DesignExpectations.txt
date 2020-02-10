@@ -1,0 +1,11 @@
+Design Expectations for PE03
+
+SELECT SQL Query: [user types in] SELECT * FROM attributes
+
+attrName|attriID|
+________|_______|________________________|
+Artist	|0	|	
+Class	|1	|	
+Mood	|2	|
+Tempo	|3	|
+Theme	|4	|
