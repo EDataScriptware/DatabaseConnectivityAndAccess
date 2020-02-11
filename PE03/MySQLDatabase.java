@@ -4,13 +4,18 @@ import java.util.*;
 
 public class MySQLDatabase  
 {
+
+   // Connecting Classes Together
+   static main m = new main();
+   static Equipment equipment = new Equipment();
+
    // Initialized Variables
    static Connection connection = null;
    static String hostMySQL = "jdbc:mysql://localhost/travel?";
    static String driver = "com.mysql.jdbc.Driver";
    static String user = "root";
    static String password = "student";
-   static String databaseType = "MySQL";
+   static String databaseType = "MySQL";   
    
    // Changed Connection to return connection instead of boolean
    public static Connection connect()
@@ -98,19 +103,58 @@ public class MySQLDatabase
       {
          // "Prepare" then "execute" statements. 
          Statement statement = connection.createStatement();
-         ResultSet result = statement.executeQuery(query);
+         ResultSet rs = statement.executeQuery(query);
          
          int count = 0;
+         
+         while (rs.next())
+         {
+            twoDimensionalArray.add(info);  
+            for ( int i = 1; i <= columnNum; i++) 
+            {
+               twoDimensionalArray.get(count).add(rs.getString(i));
+            }
+            
+            count++;  
+         }      
+      
       }
       catch (SQLException e)
       {
-         System.out.println(e);
+         System.out.println(e.toString());
       }
-   
       
       return twoDimensionalArray;
    }
-
+   
+   
+   public int setData(String query)
+   {
+      try 
+      {
+         Statement statement = connection.createStatement();
+         
+         // how many rows updated
+         int row = statement.executeUpdate(query);
+         
+         return row;
+      }
+      catch (Exception e)
+      {
+         System.out.println(e.toString());
+         
+         // return error code
+         return -1;
+      }
+         
+   
+   
+   }
+   
    
    
 }
+
+   
+   
+
