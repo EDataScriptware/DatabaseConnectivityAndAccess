@@ -10,12 +10,13 @@ public class MySQLDatabase
    static Equipment equipment = new Equipment();
 
    // Initialized Variables
-   static Connection connection = null;
+//   static Connection connection = null;
    static String hostMySQL = "jdbc:mysql://localhost/travel?";
    static String driver = "com.mysql.jdbc.Driver";
    static String user = "root";
    static String password = "student";
-   static String databaseType = "MySQL";   
+   static String databaseType = "MySQL";  
+   static Connection connection = null; 
    
    // Changed Connection to return connection instead of boolean
    public static Connection connect()
@@ -94,13 +95,16 @@ public class MySQLDatabase
       return databaseType;
    }
    
+    static MySQLDatabase msd = new MySQLDatabase();
+
    public ArrayList<ArrayList<String>> getData(String query, int columnNum)
    {
       ArrayList<ArrayList<String>> twoDimensionalArray = new ArrayList<ArrayList<String>>();
       ArrayList<String> info = new ArrayList<String>();  
-   
+      
       try
       {
+      
          // "Prepare" then "execute" statements. 
          Statement statement = connection.createStatement();
          ResultSet rs = statement.executeQuery(query);

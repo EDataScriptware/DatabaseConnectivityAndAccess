@@ -4,15 +4,20 @@ import java.util.*;
 
 public class main
 {
-   // Connecting Classes Together
-   static MySQLDatabase msd = new MySQLDatabase();
-   static Equipment equipment = new Equipment();
-   
+
    public static void main(String[] args) 
    {
-   
-      Connection connection = msd.connect();
-      msd.close(connection);
+      // Connecting Classes Together
+      MySQLDatabase msd = new MySQLDatabase();
+      Equipment equipment = new Equipment();
+
+      // FINDS THE DATA BASED ON ID NUMBER
+      System.out.println( "\nRunning Class Equipment..." );
+      Equipment equip = new Equipment(568); 
+      equip.fetch();  
+      System.out.println(equip.toString());
+      
+
       
       
       

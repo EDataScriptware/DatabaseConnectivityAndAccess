@@ -83,6 +83,8 @@ public class Equipment
       return record;
    }
    
+   
+   // fetch method - retrieves the data
    public void fetch()
    {
       Connection connection = msd.connect();
@@ -99,8 +101,8 @@ public class Equipment
          
          msd.close(connection);
       }
-
-
+   
+   
    } // end fetch
    
    public void put()
@@ -135,6 +137,26 @@ public class Equipment
       record = msd.setData(query);
             
       msd.close(connection);
+   } // end delete
+   
+   public String toString()
+   {
+      String output =  "Equipment: " + getEquipmentId() + "\nEquipmentName: " + getEquipmentName()
+         + "\nEquipmentDescription: " + getEquipmentDescription() + "\nEquipmentCapacity: " + getEquipmentCapacity()
+         + "\n---------------------\n" + getRecord() + " row(s) affected\n";
+      this.record = 0;
+   
+      return output;
    }
+   
+   public String toStringOnlyNum()
+   {
+      
+      String output =  "---------------------\n" + getRecord() + " row(s) affected\n";
+      this.record = 0;
+      return output;
+      
+   }
+   
 
 }
