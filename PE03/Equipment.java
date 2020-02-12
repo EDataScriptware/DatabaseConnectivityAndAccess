@@ -89,7 +89,7 @@ public class Equipment
    {
       Connection connection = msd.connect();
       String query = "SELECT * FROM equipment WHERE equipID = " + getEquipmentId() + ";";
-      ArrayList<ArrayList<String>> twoDimensionalArray = twoDimensionalArray = msd.getData(query, 4);;
+      ArrayList<ArrayList<String>> twoDimensionalArray = twoDimensionalArray = msd.getData(query, 4, connection);;
       
       if (twoDimensionalArray.size() != 0)
       {

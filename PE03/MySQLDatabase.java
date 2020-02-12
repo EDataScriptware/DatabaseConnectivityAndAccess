@@ -95,9 +95,10 @@ public class MySQLDatabase
       return databaseType;
    }
    
+   
     static MySQLDatabase msd = new MySQLDatabase();
 
-   public ArrayList<ArrayList<String>> getData(String query, int columnNum)
+   public ArrayList<ArrayList<String>> getData(String query, int columnNum, Connection connection)
    {
       ArrayList<ArrayList<String>> twoDimensionalArray = new ArrayList<ArrayList<String>>();
       ArrayList<String> info = new ArrayList<String>();  
@@ -116,8 +117,23 @@ public class MySQLDatabase
             twoDimensionalArray.add(info);  
             for ( int i = 1; i <= columnNum; i++) 
             {
-               twoDimensionalArray.get(count).add(rs.getString(i));
+              twoDimensionalArray.get(count).add(rs.getString(i));
             }
+            
+            
+            
+            
+            // *The Jim Habermas Style Code*
+            // int i = 1;
+//                      // keeps getting them and puts them in an row
+//             while (rs.next()) {
+//                row.add(rs.getString(i));
+//             
+//             ++i;
+//             } // end of inner while loop - each row
+            
+            
+            
             
             count++;  
          }      

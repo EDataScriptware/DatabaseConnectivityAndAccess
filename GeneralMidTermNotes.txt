@@ -1,0 +1,11 @@
+Mid-Term Exam 
+SQL -> Metadata
+5 Questions "think before you write" (a question containing questions)
+
+Driver
+	- Why choose one over the other? 
+
+Two types of Data Access Objects
+	- Single Row
+	- Several Rows
+

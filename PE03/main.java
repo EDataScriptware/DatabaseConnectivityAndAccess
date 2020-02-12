@@ -13,9 +13,9 @@ public class main
 
       // FINDS THE DATA BASED ON ID NUMBER
       System.out.println( "\nRunning Class Equipment..." );
-      Equipment equip = new Equipment(568); 
-      equip.fetch();  
-      System.out.println(equip.toString());
+      Equipment equipmentA = new Equipment(568); 
+      equipmentA.fetch();  
+      System.out.println(equipmentA.toString());
       
 
       
