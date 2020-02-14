@@ -9,3 +9,12 @@ Two types of Data Access Objects
 	- Single Row
 	- Several Rows
 
+
+Programming Exam - only index cards
+	- Know how to set up database
+	- Instantiate Connection
+	- Make prepared connections
+	- Get results
+	
+
+

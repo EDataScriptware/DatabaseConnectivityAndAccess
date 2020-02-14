@@ -29,6 +29,7 @@ public class Equipment
       equipmentId = _equipmentId;
    }
    
+   // equipment full constructor
    public Equipment(int _equipmentId, int _equipmentCapacity, String _equipmentName, String _equipmentDescription)
    {
       equipmentId = _equipmentId;
@@ -88,8 +89,9 @@ public class Equipment
    public void fetch()
    {
       Connection connection = msd.connect();
+      msd.setConnection(connection);
       String query = "SELECT * FROM equipment WHERE equipID = " + getEquipmentId() + ";";
-      ArrayList<ArrayList<String>> twoDimensionalArray = twoDimensionalArray = msd.getData(query, 4, connection);;
+      ArrayList<ArrayList<String>> twoDimensionalArray = twoDimensionalArray = msd.getData(query, 4);
       
       if (twoDimensionalArray.size() != 0)
       {
@@ -98,14 +100,14 @@ public class Equipment
          setEquipmentName(twoDimensionalArray.get(0).get(1));
          setEquipmentDescription(twoDimensionalArray.get(0).get(2));
          setEquipmentCapacity(Integer.parseInt(twoDimensionalArray.get(0).get(3)));
-         
-         msd.close(connection);
+         // msd.close(connection);
       }
    
-   
+      //msd.close(connection);
+
    } // end fetch
    
-   public void put()
+   public void put() // put method - changes the data
    {
       Connection connection = msd.connect();
       String query = "Update Equipment SET EquipID = " + getEquipmentId() + ", EquipmentName = '" + getEquipmentName() + "', EquipmentDescription = '" + getEquipmentDescription() + "', EquipmentCapacity = " + getEquipmentCapacity() + " Where EquipID = " + getEquipmentId() + ";";
@@ -117,44 +119,52 @@ public class Equipment
          this.record = record;
       }
       
-      msd.close(connection);
+      // msd.close(connection);
    
    } // end put   
 
-   public void post()
+   public void post() // post method - inserts the data
    { 
       Connection connection = msd.connect();
-      String query = "INSERT INTO Equipment (EquipID,EquipmentName, EquipmentDescription, EquipmentCapacity)" + " VALUES (" + getEquipmentId() + ", '" +getEquipmentName()+"', '" + getEquipmentDescription() + "', " + getEquipmentCapacity() + " );";
+      String query = "INSERT INTO Equipment (EquipID, EquipmentName, EquipmentDescription, EquipmentCapacity)" + " VALUES (" + getEquipmentId() + ", '" +getEquipmentName()+"', '" + getEquipmentDescription() + "', " + getEquipmentCapacity() + " );";
           
       record = msd.setData(query);
-      msd.close(connection);
+      
+     // msd.close(connection);
    } // end post
    
-   public void delete()
+   public void delete() // delete method - deletes the data
    {
       Connection connection = msd.connect();
       String query = "DELETE FROM Equipment WHERE EquipID = " + getEquipmentId() + ";";
       record = msd.setData(query);
             
-      msd.close(connection);
+      // msd.close(connection);
    } // end delete
    
+   /* Presentation Layer(?) */
    public String toString()
    {
-      String output =  "Equipment: " + getEquipmentId() + "\nEquipmentName: " + getEquipmentName()
-         + "\nEquipmentDescription: " + getEquipmentDescription() + "\nEquipmentCapacity: " + getEquipmentCapacity()
-         + "\n---------------------\n" + getRecord() + " row(s) affected\n";
+      String message =  "Equipment: " + getEquipmentId();
+      message += "\nEquipment Name: " + getEquipmentName();
+      message += "\nEquipment Description: " + getEquipmentDescription();
+      message += "\nEquipment Capacity: " + getEquipmentCapacity();
+      message += "\n---------------------\n" + getRecord() + " row(s) affected\n";
+      
+      // reset to 0
       this.record = 0;
    
-      return output;
+      return message;
    }
    
-   public String toStringOnlyNum()
+   public String numToString()
    {
       
-      String output =  "---------------------\n" + getRecord() + " row(s) affected\n";
+      String message =  "---------------------\n" + getRecord() + " row(s) affected\n";
+      
+      // reset to 0
       this.record = 0;
-      return output;
+      return message;
       
    }
    
