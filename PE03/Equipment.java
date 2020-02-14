@@ -1,3 +1,10 @@
+/* 
+   Name: Edward Riley
+   Professor: Stephen Zilora
+   Course: Database Connectivity and Access
+   Date: Feburary 14, 2020
+*/
+
 import java.sql.*;
 import javax.sql.*;
 import java.util.*;
@@ -96,7 +103,7 @@ public class Equipment
       if (twoDimensionalArray.size() != 0)
       {
          setEquipmentId(Integer.parseInt(twoDimensionalArray.get(0).get(0)));
-         System.out.println(Integer.parseInt(twoDimensionalArray.get(0).get(0)));
+         // System.out.println(Integer.parseInt(twoDimensionalArray.get(0).get(0)));
          setEquipmentName(twoDimensionalArray.get(0).get(1));
          setEquipmentDescription(twoDimensionalArray.get(0).get(2));
          setEquipmentCapacity(Integer.parseInt(twoDimensionalArray.get(0).get(3)));
@@ -149,10 +156,9 @@ public class Equipment
       message += "\nEquipment Name: " + getEquipmentName();
       message += "\nEquipment Description: " + getEquipmentDescription();
       message += "\nEquipment Capacity: " + getEquipmentCapacity();
-      message += "\n---------------------\n" + getRecord() + " row(s) affected\n";
+      message += "/n/n" + getRecord() + " rows affected\n";
       
-      // reset to 0
-      this.record = 0;
+      record = 0;
    
       return message;
    }
@@ -160,10 +166,9 @@ public class Equipment
    public String numToString()
    {
       
-      String message =  "---------------------\n" + getRecord() + " row(s) affected\n";
+      String message =  "/n/n" + getRecord() + " rows affected\n";
       
-      // reset to 0
-      this.record = 0;
+      record = 0;
       return message;
       
    }

@@ -1,3 +1,10 @@
+/* 
+   Name: Edward Riley
+   Professor: Stephen Zilora
+   Course: Database Connectivity and Access
+   Date: Feburary 14, 2020
+*/
+
 import java.sql.*;
 import javax.sql.*;
 import java.util.*;
@@ -122,8 +129,8 @@ public class MySQLDatabase
       {
       
          // Prepare then execute statements. 
-         Statement statement = connection.createStatement(); // The problem is... Connection is "null" 
-         ResultSet rs = statement.executeQuery(query);
+         Statement stmt = connection.createStatement(); // The problem is... Connection is "null" 
+         ResultSet rs = stmt.executeQuery(query);
          
          int count = 0;
          
@@ -152,10 +159,10 @@ public class MySQLDatabase
    {
       try 
       {
-         Statement statement = connection.createStatement();
+         Statement stmt = connection.createStatement();
          
          // how many rows updated
-         int row = statement.executeUpdate(query);
+         int row = stmt.executeUpdate(query);
          
          return row;
       }

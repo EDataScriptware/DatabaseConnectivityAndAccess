@@ -1,3 +1,10 @@
+/* 
+   Name: Edward Riley
+   Professor: Stephen Zilora
+   Course: Database Connectivity and Access
+   Date: Feburary 14, 2020
+*/
+
 import java.sql.*;
 import javax.sql.*;
 import java.util.*;
@@ -34,15 +41,14 @@ public class main
       System.out.println(equipmentB.getRecord() + " row(s) affected");
     
       
-      //Checking to see if file is there.
+      // CHECKING TO SEE IF THE FILE IS THERE
       equipmentB.fetch();
       System.out.println(equipmentB.toString());
-      
       
       // DELETES THE DATA
       equipmentB.delete();
       
-      // Checking to see if file is there with friendly message
+      // CHECKING TO SEE IF THE FILE IS THERE
       equipmentB.fetch();
       System.out.println(equipmentB.numToString());
       
