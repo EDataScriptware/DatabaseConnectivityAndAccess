@@ -105,7 +105,7 @@ public class Equipment
          setEquipmentId(Integer.parseInt(twoDimensionalArray.get(0).get(0)));
          // System.out.println(Integer.parseInt(twoDimensionalArray.get(0).get(0)));
          setEquipmentName(twoDimensionalArray.get(0).get(1));
-         setEquipmentDescription(twoDimensionalArrget(0).get(2));
+         setEquipmentDescription(twoDimensionalArray.get(0).get(2));
          setEquipmentCapacity(Integer.parseInt(twoDimensionalArray.get(0).get(3)));
          // msd.close(connection);
       }
