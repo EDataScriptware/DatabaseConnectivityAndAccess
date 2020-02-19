@@ -1,0 +1,8 @@
+Tue Oct 02 23:54:23 EDT 2018[[java.MySqlDatabase.connect: Could not create connection to database server. Attempted reconnect 3 times. Giving up.]]
+Tue Oct 02 23:54:23 EDT 2018[[java.Equipment: Fetch: Could not create connection to database server. Attempted reconnect 3 times. Giving up.]]
+Tue Oct 02 23:54:34 EDT 2018[[java.MySqlDatabase.getData: Unknown column 'equipID1' in 'where clause']]
+Tue Oct 02 23:54:35 EDT 2018[[java.Equipment: Fetch: Unknown column 'equipID1' in 'where clause']]
+Tue Oct 09 16:25:29 EDT 2018[[java.MySqlDatabase.connect: Could not create connection to database server. Attempted reconnect 3 times. Giving up.]]
+Tue Oct 09 16:25:29 EDT 2018[[java.Equipment: Fetch: Could not create connection to database server. Attempted reconnect 3 times. Giving up.]]
+Tue Oct 09 16:25:50 EDT 2018[[java.MySqlDatabase.connect: Could not create connection to database server. Attempted reconnect 3 times. Giving up.]]
+Tue Oct 09 16:25:50 EDT 2018[[java.Equipment: Fetch: Could not create connection to database server. Attempted reconnect 3 times. Giving up.]]
