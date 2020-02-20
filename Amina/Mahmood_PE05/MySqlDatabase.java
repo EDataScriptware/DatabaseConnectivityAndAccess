@@ -11,9 +11,9 @@ public class MySqlDatabase
 {
    // Definitions for MySQL connection
    private String uri = "jdbc:mysql://localhost/travel?autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-   private String driver = "com.mysql.cj.jdbc.Driver";
+   private String driver = "com.mysql.jdbc.Driver";
    private String user = "root";
-   private String password ="student";
+   private String password ="students";
    
    private Connection conn = null;
    private ArrayList<String> errorMessage = new ArrayList<String>();

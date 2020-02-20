@@ -24,3 +24,6 @@ Fri Oct 12 16:47:35 EDT 2018[[java.MySqlDatabase:descTable: java.sql.SQLSyntaxEr
 java.sql.SQLSyntaxErrorException: Unknown column 'equidID' in 'where clause']]
 Fri Oct 12 16:48:21 EDT 2018[[java.MySqlDatabase:descTable: java.sql.SQLSyntaxErrorException: Unknown column 'equidId' in 'where clause'
 java.sql.SQLSyntaxErrorException: Unknown column 'equidId' in 'where clause']]
+Thu Feb 20 13:34:33 EST 2020[[java.MySqlDatabase.connect: com.mysql.cj.jdbc.Driver]]
+Thu Feb 20 13:34:52 EST 2020[[java.MySqlDatabase.connect: com.mysql.cj.jdbc.Driver]]
+Thu Feb 20 13:34:53 EST 2020[[java.MySqlDatabase.connect: com.mysql.cj.jdbc.Driver]]

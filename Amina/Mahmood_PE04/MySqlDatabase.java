@@ -11,9 +11,9 @@ public class MySqlDatabase
 {
    // Definitions for MySQL connection
    private String uri = "jdbc:mysql://localhost/travel?autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-   private String driver = "com.mysql.cj.jdbc.Driver";
+   private String driver = "com.mysql.jdbc.Driver";
    private String user = "root";
-   private String password ="Lovers@1996";
+   private String password ="students";
    
    private Connection conn = null;
    private ArrayList<String> errorMessage = new ArrayList<String>();
@@ -31,6 +31,7 @@ public class MySqlDatabase
       {
          Class.forName(driver);
          conn = DriverManager.getConnection(uri, user, password);
+         System.out.println("works");
          return true;
       }
       catch (Exception sqle) 
@@ -65,7 +66,7 @@ public class MySqlDatabase
    }
       
    // Use an arraylist with getData method 
-   public ArrayList<ArrayList<String>> getData(String queny, int columnNum) throws DLException
+   public ArrayList<ArrayList<String>> getData(String query, int columnNum) throws DLException
    {
    
       ArrayList<ArrayList<String>> myTable = new ArrayList<ArrayList<String>>();

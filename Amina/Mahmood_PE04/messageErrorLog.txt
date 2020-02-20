@@ -6,3 +6,7 @@ Tue Oct 09 16:25:29 EDT 2018[[java.MySqlDatabase.connect: Could not create conne
 Tue Oct 09 16:25:29 EDT 2018[[java.Equipment: Fetch: Could not create connection to database server. Attempted reconnect 3 times. Giving up.]]
 Tue Oct 09 16:25:50 EDT 2018[[java.MySqlDatabase.connect: Could not create connection to database server. Attempted reconnect 3 times. Giving up.]]
 Tue Oct 09 16:25:50 EDT 2018[[java.Equipment: Fetch: Could not create connection to database server. Attempted reconnect 3 times. Giving up.]]
+Thu Feb 20 12:55:07 EST 2020[[java.MySqlDatabase.connect: com.mysql.cj.jdbc.Driver]]
+Thu Feb 20 12:55:07 EST 2020[[java.Equipment: Fetch: com.mysql.cj.jdbc.Driver]]
+Thu Feb 20 12:55:49 EST 2020[[java.MySqlDatabase.connect: com.mysql.cj.jdbc.Driver]]
+Thu Feb 20 12:55:49 EST 2020[[java.Equipment: Fetch: com.mysql.cj.jdbc.Driver]]
