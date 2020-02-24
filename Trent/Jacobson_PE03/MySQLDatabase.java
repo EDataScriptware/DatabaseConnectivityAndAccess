@@ -115,11 +115,10 @@ public class MySQLDatabase {
    public ArrayList<ArrayList<String>> getData(String SQLQuery) {
       ArrayList<ArrayList<String>> array = new ArrayList<ArrayList<String>>();
       
-      int numberColums = 0;
+      int numberColumns = 0;
       
       String first = "Column Name";
       String second = "Column Type";
-      StringBuilder sb = new StringBuilder();
       
                   
 
@@ -132,13 +131,15 @@ public class MySQLDatabase {
          ResultSetMetaData resultsetmetadata = resultset.getMetaData();
          
          String tableName = resultsetmetadata.getTableName(1);
+         numberColumns = resultsetmetadata.getColumnCount();
+         
 
          
-         String firstRow = "Table " + tableName + " has " + numberColums + " fields.";
+         String firstRow = "Table " + tableName + " has " + numberColumns + " fields.";
          String list = String.format("....%-11s....     ....%-11s....", first, second);
          System.out.printf(firstRow + "\n\n" + list + "\n");
          
-                     for(int i = 1; i <= numberColums; i++) {
+                     for(int i = 1; i <= numberColumns; i++) {
                String record = String.format("%-25s    %-15s", resultsetmetadata.getColumnName(i), (resultsetmetadata.getColumnTypeName(i) + "(" + resultsetmetadata.getColumnDisplaySize(i) + ")"));
                System.out.printf( record + "\n");
             }
@@ -147,7 +148,7 @@ public class MySQLDatabase {
          if(resultset.isBeforeFirst()) {
          
          
-            numberColums = resultsetmetadata.getColumnCount();
+            numberColumns = resultsetmetadata.getColumnCount();
 
             System.out.println();
             String repeat = "";
@@ -158,7 +159,7 @@ public class MySQLDatabase {
          
             while(resultset.next()) {
                String output = "";
-               for(int i = 1; i <= numberColums; i++) {
+               for(int i = 1; i <= numberColumns; i++) {
                   columnSize = resultsetmetadata.getColumnName(i).length() + 6;
                   String format = "%-" + columnSize + "s|";
                   String record = String.format(format, resultset.getString(i));
@@ -191,7 +192,7 @@ public class MySQLDatabase {
       catch(Exception e) {
          System.out.println(e);
       }
-       
+       s
       return array;
    }
    

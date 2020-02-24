@@ -2,7 +2,7 @@
    Name: Edward Riley
    Professor: Stephen Zilora
    Course: Database Connectivity and Access
-   Date: Feburary 14, 2020
+   Date: Feburary 21, 2020
 */
 
 import java.sql.*;
@@ -17,32 +17,24 @@ public class main
       // Connecting Classes Together
       MySQLDatabase msd = new MySQLDatabase();
       Equipment equipment = new Equipment();
-
-      
-      // CREATES A NEW DATA ASSIGNED BY NAME ID
-      int _equipmentID = 7;
-      String _equipmentName = "RileyEquipment";
-      String _equipmentDescription = "RileyDesc";
-      int _equipmentCapacity = 500;
-      
-      Equipment equipmentB = new Equipment(_equipmentID, _equipmentCapacity, _equipmentName, _equipmentDescription);
-      equipmentB.post();
+   
+      // Equipment A
+      System.out.println( "\nRunning Class Equipment A..." );
+      Equipment equipmentA = new Equipment(568); 
+      equipmentA.fetch();  
+      System.out.println(equipmentA.toString());
+   
+      // Equipment B
+      System.out.println( "\nRunning Class Equipment B..." );
+      Equipment equipmentB = new Equipment(894); 
+      equipmentB.fetch();  
       System.out.println(equipmentB.toString());
       
-      // ALTERS THE DATA
-      equipmentB.setEquipmentCapacity(501);
-      equipmentB.put();
-      System.out.println("Altering the equipment capacity of EquipID:" + equipmentB.getEquipmentId() +  " to " + equipmentB.getEquipmentCapacity());
-      System.out.println(equipmentB.getRecord() + " row(s) affected");
-    
+      // Fetches the attributes from metadata
+      equipmentA.fetchAttritubes(); 
+      equipmentB.fetchAttritubes(); 
+      equipment.fetchAllAttritubes();
       
-      // CHECKING TO SEE IF THE FILE IS THERE
-      equipmentB.fetch();
-      System.out.println(equipmentB.toString());
-      
-      // DELETES THE DATA
-      equipmentB.delete();
-
    }
    
    

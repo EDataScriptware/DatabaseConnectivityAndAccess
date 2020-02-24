@@ -2,7 +2,7 @@
    Name: Edward Riley
    Professor: Stephen Zilora
    Course: Database Connectivity and Access
-   Date: Feburary 14, 2020
+   Date: Feburary 21, 2020
 */
 
 import java.sql.*;
@@ -103,15 +103,12 @@ public class Equipment
       if (twoDimensionalArray.size() != 0)
       {
          setEquipmentId(Integer.parseInt(twoDimensionalArray.get(0).get(0)));
-         // System.out.println(Integer.parseInt(twoDimensionalArray.get(0).get(0)));
          setEquipmentName(twoDimensionalArray.get(0).get(1));
          setEquipmentDescription(twoDimensionalArray.get(0).get(2));
          setEquipmentCapacity(Integer.parseInt(twoDimensionalArray.get(0).get(3)));
-         // msd.close(connection);
       }
    
-      //msd.close(connection);
-
+   
    } // end fetch
    
    public void put() // put method - changes the data
@@ -146,7 +143,7 @@ public class Equipment
       String query = "DELETE FROM Equipment WHERE EquipID = " + getEquipmentId() + ";";
       record = msd.setData(query);
             
-      // msd.close(connection);
+     // msd.close(connection);
    } // end delete
    
    /* Presentation Layer(?) */
@@ -166,12 +163,30 @@ public class Equipment
    public String numToString()
    {
       
-      String message =  "\n\n" + getRecord() + " rows affected\n";
+      String message =  "/n/n" + getRecord() + " rows affected\n";
       
       record = 0;
       return message;
       
    }
    
+   // Retrieving the equipment attributes
+   public void fetchAttritubes() {
+      MySQLDatabase SQL = new MySQLDatabase();
+      Connection connection = msd.connect();
+      SQL.getData("SELECT * FROM equipment WHERE EquipID = " + getEquipmentId());
+      System.out.println("\n");
+      msd.close(connection); 
+   }
+   
+     // Retrieving the equipment attributes
+   public void fetchAllAttritubes() {
+      MySQLDatabase SQL = new MySQLDatabase();
+      Connection connection = msd.connect();
+      SQL.getData("SELECT * FROM equipment");
+      System.out.println("\n");
+      msd.close(connection); 
+   }
+
 
 }
