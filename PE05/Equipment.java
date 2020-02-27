@@ -2,12 +2,13 @@
    Name: Edward Riley
    Professor: Stephen Zilora
    Course: Database Connectivity and Access
-   Date: Feburary 21, 2020
+   Date: Feburary 26, 2020
 */
 
 import java.sql.*;
 import javax.sql.*;
 import java.util.*;
+import java.io.*;
 
 
 public class Equipment
@@ -93,8 +94,9 @@ public class Equipment
    
    
    // fetch method - retrieves the data
-   public void fetch()
+   public void fetch() throws DLException
    {
+      
       Connection connection = msd.connect();
       msd.setConnection(connection);
       String query = "SELECT * FROM equipment WHERE equipID = " + getEquipmentId() + ";";
@@ -111,7 +113,7 @@ public class Equipment
    
    } // end fetch
    
-   public void put() // put method - changes the data
+   public void put() throws DLException // put method - changes the data
    {
       Connection connection = msd.connect();
       String query = "Update Equipment SET EquipID = " + getEquipmentId() + ", EquipmentName = '" + getEquipmentName() + "', EquipmentDescription = '" + getEquipmentDescription() + "', EquipmentCapacity = " + getEquipmentCapacity() + " Where EquipID = " + getEquipmentId() + ";";
@@ -127,7 +129,7 @@ public class Equipment
    
    } // end put   
 
-   public void post() // post method - inserts the data
+   public void post() throws DLException // post method - inserts the data
    { 
       Connection connection = msd.connect();
       String query = "INSERT INTO Equipment (EquipID, EquipmentName, EquipmentDescription, EquipmentCapacity)" + " VALUES (" + getEquipmentId() + ", '" +getEquipmentName()+"', '" + getEquipmentDescription() + "', " + getEquipmentCapacity() + " );";
@@ -137,7 +139,7 @@ public class Equipment
      // msd.close(connection);
    } // end post
    
-   public void delete() // delete method - deletes the data
+   public void delete() throws DLException // delete method - deletes the data
    {
       Connection connection = msd.connect();
       String query = "DELETE FROM Equipment WHERE EquipID = " + getEquipmentId() + ";";
@@ -171,7 +173,7 @@ public class Equipment
    }
    
    // Retrieving the equipment attributes
-   public void fetchAttritubes() {
+   public void fetchAttritubes() throws DLException {
       MySQLDatabase SQL = new MySQLDatabase();
       Connection connection = msd.connect();
       SQL.getData("SELECT * FROM equipment WHERE EquipID = " + getEquipmentId());
@@ -179,8 +181,17 @@ public class Equipment
       msd.close(connection); 
    }
    
+      // Retrieving the equipment attributes
+   public void fetchAttritubesError() throws DLException {
+      MySQLDatabase SQL = new MySQLDatabase();
+      Connection connection = msd.connect();
+      SQL.getData("SELECT * FROM equipment WHERE EquipIDs = " + getEquipmentId());
+      System.out.println("\n");
+      msd.close(connection); 
+   }
+   
      // Retrieving the equipment attributes
-   public void fetchAllAttritubes() {
+   public void fetchAllAttritubes() throws DLException{
       MySQLDatabase SQL = new MySQLDatabase();
       Connection connection = msd.connect();
       SQL.getData("SELECT * FROM equipment");

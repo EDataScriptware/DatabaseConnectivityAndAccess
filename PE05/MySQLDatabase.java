@@ -2,12 +2,13 @@
    Name: Edward Riley
    Professor: Stephen Zilora
    Course: Database Connectivity and Access
-   Date: Feburary 21, 2020
+   Date: Feburary 26, 2020
 */
 
 import java.sql.*;
 import javax.sql.*;
 import java.util.*;
+import java.io.*;
 
 public class MySQLDatabase  
 {
@@ -27,9 +28,8 @@ public class MySQLDatabase
    
    
    
-   
    // Changed Connection to return connection instead of boolean
-   public static Connection connect()
+   public static Connection connect() throws DLException
    {
       try 
       {
@@ -53,9 +53,9 @@ public class MySQLDatabase
       {
          // System.out.println("Message: " + e.getMessage());
          
-         // If all is NOT fine and swell - return null as inoperational
          System.out.println(e);
-         return null;
+         throw new DLException(e, e.toString());
+      
       }
       catch (Exception e)
       {
@@ -64,11 +64,52 @@ public class MySQLDatabase
          // If all is NOT fine and swell - return null as inoperational
          System.out.println(e);
       
-         return null;
+         throw new DLException(e, e.toString());
       }
    } // end connect method
    
-   public static boolean close(Connection connection)
+    // Changed Connection to return connection instead of boolean
+   public static Connection connectError() throws DLException
+   {
+      try 
+      {
+         
+         // Loads driver
+         Class.forName(driver);     
+         
+         // Initiates Connection
+         // System.out.print("\nAttempting to initiate connection to " + url + " as " + user + "...");
+         Connection connection = DriverManager.getConnection("jdbc:mysql://intentionalerror", user, password);
+         // System.out.print("Success!");
+      
+         //close(connection);
+         
+         // If all is fine and swell - return connection
+         return connection;
+      
+      
+      }
+      catch (SQLException e)
+      {
+         // System.out.println("Message: " + e.getMessage());
+         
+         System.out.println(e);
+         throw new DLException(e, e.toString());
+      
+      }
+      catch (Exception e)
+      {
+         // System.out.println("Connection FAILED\nError: " + e.toString());
+      
+         // If all is NOT fine and swell - return null as inoperational
+         System.out.println(e);
+      
+         throw new DLException(e, e.toString());
+      }
+   } // end connect method
+
+   
+   public static boolean close(Connection connection) throws DLException
    {
       try 
       {
@@ -76,15 +117,16 @@ public class MySQLDatabase
        
        // Receive ANY connection and attempt to close. 
          connection.close();
+         return true;
+      
       
        //  System.out.print("Success!");
       }
       catch (Exception e)
       {
        //  System.out.println("Error! Failed to close! Error Message: " + e.toString());
-         return false;
+         throw new DLException(e, e.toString());
       }
-      return true;
    }
 
    public String getURL()
@@ -120,7 +162,7 @@ public class MySQLDatabase
    
    static MySQLDatabase msd = new MySQLDatabase();
 
-   public ArrayList<ArrayList<String>> getData(String query, int columnNum)
+   public ArrayList<ArrayList<String>> getData(String query, int columnNum) throws DLException
    {
       ArrayList<ArrayList<String>> twoDimensionalArray = new ArrayList<ArrayList<String>>();
       ArrayList<String> info = new ArrayList<String>();  
@@ -149,13 +191,14 @@ public class MySQLDatabase
       catch (SQLException e)
       {
          System.out.println(e.toString());
+         throw new DLException(e, e.toString());
       }
       
       return twoDimensionalArray;
    }
    
    
-   public int setData(String query)
+   public int setData(String query) throws DLException
    {
       try 
       {
@@ -171,7 +214,7 @@ public class MySQLDatabase
          System.out.println(e.toString());
          
          // return error code
-         return -1;
+         throw new DLException(e, e.toString());
       }
    }
    
@@ -185,7 +228,7 @@ public class MySQLDatabase
    }
    
    // Added another method named getData that accepts SQL string and returns a 2-d ArrayList
-   public ArrayList<ArrayList<String>> getData(String SQLQuery) {
+   public ArrayList<ArrayList<String>> getData(String SQLQuery) throws DLException {
       ArrayList<ArrayList<String>> twoDimensionalArray = new ArrayList<ArrayList<String>>();
       
       int numberOfColumns = 0;
@@ -193,7 +236,7 @@ public class MySQLDatabase
       try {
       
          Statement statement = connection.createStatement();  
-
+      
          ResultSet resultSet = statement.executeQuery(SQLQuery);       
          ResultSetMetaData resultsetmetadata = resultSet.getMetaData();
          
@@ -206,7 +249,7 @@ public class MySQLDatabase
          
          System.out.printf("Attributes Name\t\t\t\t\tAttributesType");
          System.out.println("\n----------------------------------------------");
-
+      
          for(int i = 1; i <= numberOfColumns; i++)
          {
             System.out.printf("\n%-25s     %-15s", resultsetmetadata.getColumnName(i), (resultsetmetadata.getColumnTypeName(i) + "(" + resultsetmetadata.getColumnDisplaySize(i) + ")"));
@@ -233,12 +276,12 @@ public class MySQLDatabase
                   String record = String.format(format, resultSet.getString(i));
                   message += record;
                
-                     if(flag) {
+                  if(flag) {
                      columnLabel += String.format(format, resultsetmetadata.getColumnName(i));
                      repeat += getRepeat(columnSize);
                   }
                }
-
+            
                if(flag){
                   System.out.println(repeat + "+");
                   System.out.println(columnLabel);
@@ -258,6 +301,8 @@ public class MySQLDatabase
       
       catch(Exception e) {
          System.out.println(e);
+         throw new DLException(e, e.toString());
+
       }
        
       return twoDimensionalArray;
