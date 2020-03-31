@@ -1,0 +1,35 @@
+Reason: Unknown - please refer to Cause below.
+Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
+
+Reason: Unknown - please refer to Cause below.
+Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
+
+Reason: Unknown - please refer to Cause below.
+Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
+
+Reason: Unknown - please refer to Cause below.
+Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
+
+Reason: Unknown - please refer to Cause below.
+Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
+
+Reason: Unknown - please refer to Cause below.
+Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
+
+Reason: Unknown - please refer to Cause below.
+Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
+Reason: Unknown - please refer to Cause below.
+Cause: Index 0 out of bounds for length 0
+
+Reason: Unknown - please refer to Cause below.
+Cause: Index 0 out of bounds for length 0
+
+Reason: Unknown - please refer to Cause below.
+Cause: Index 0 out of bounds for length 0
+
+Reason: Unknown - please refer to Cause below.
+Cause: Index 0 out of bounds for length 0
+
+Reason: Unknown - please refer to Cause below.
+Cause: Index 0 out of bounds for length 0
+

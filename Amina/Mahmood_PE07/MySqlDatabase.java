@@ -30,7 +30,7 @@ public class MySqlDatabase
    // Connect method
    public boolean connect() throws DLException
    {
-      // Use try and catch statement
+      // Use try xand catch statement
       try
       {
          Class.forName(driver);
