@@ -2,7 +2,7 @@
    Name: Edward Riley
    Professor: Stephen Zilora
    Course: Database Connectivity and Access
-   Date: Feburary 26, 2020
+   Date: April 04, 2020
 */
 
 import java.sql.*;
@@ -15,33 +15,42 @@ public class main
 
    public static void main(String[] args) throws DLException
    {
+      // Edward's Note for TA: The wall of text together is difficult to read together henceforth Step #3a-#3e
+
       // Connecting Classes Together
       MySQLDatabase msd = new MySQLDatabase();
       Equipment equipment = new Equipment();
+      int aEquipmentID = 568;
+      int bEquipmentID = 894;
    
       // Equipment A
       System.out.println( "\nRunning Class Equipment A..." );
-      Equipment equipmentA = new Equipment(568); 
+            
+      
+      // Step #3a
+      Equipment equipmentA = new Equipment(aEquipmentID); 
+      
+      // Step #3b
       equipmentA.fetch();  
       System.out.println(equipmentA.toString());
-   
-      // Equipment B
-      // System.out.println( "\nRunning Class Equipment B..." );
-      // Equipment equipmentB = new Equipment(894); 
-      // equipmentB.fetch();  
-      // System.out.println(equipmentB.toString());
       
-      // Fetches the attributes from metadata
-      // equipmentA.fetchAttritubes(); 
-      // equipmentB.fetchAttritubes(); 
-      // equipment.fetchAllAttritubes();
+      // Step #3c
+      equipmentA.swap(bEquipmentID);  
+      equipmentA.setEquipmentId(aEquipmentID);
       
-      
-      // Changing Equipment ID
-      System.out.println( "\nRunning Class Equipment A with new Data..." );
-      equipmentA = new Equipment(894);
+      // Step #3d
       equipmentA.fetch();
       System.out.println(equipmentA.toString());
+      
+      // Step #3e       
+      Equipment equipmentB = new Equipment(bEquipmentID); 
+      equipmentB.fetch();  
+      System.out.println(equipmentB.toString());
+      equipmentB.swap(aEquipmentID); // using equipmentA equipmentID
+      equipmentB.setEquipmentId(bEquipmentID);
+      equipmentB.fetch();
+      System.out.println(equipmentB.toString());
+   
    }
    
    

@@ -2,7 +2,7 @@
    Name: Edward Riley
    Professor: Stephen Zilora
    Course: Database Connectivity and Access
-   Date: March 18, 2020
+   Date: April 03, 2020  
 */
 
 import java.sql.*;
@@ -175,9 +175,9 @@ public class MySQLDatabase
          Statement stmt = connection.createStatement(); 
         
          ResultSet rs = ps.executeQuery();              
-
+      
          ResultSetMetaData rsmd = rs.getMetaData();
-
+      
          int columnNum = rsmd.getColumnCount();
          int count = 0;
          
@@ -237,7 +237,6 @@ public class MySQLDatabase
       return value;
    }
    
-   // Added another method named getData that accepts SQL string and returns a 2-d ArrayList
    public ArrayList<ArrayList<String>> getData(String SQLQuery) throws DLException {
       ArrayList<ArrayList<String>> twoDimensionalArray = new ArrayList<ArrayList<String>>();
       
@@ -353,6 +352,71 @@ public class MySQLDatabase
       }
       
    }
+
+
+   public boolean startTrans() throws DLException
+   { 
+      try
+      {  
+         if(connection == null || connection.getAutoCommit())
+         {
+            connection.setAutoCommit(false);
+            return true;
+         }
+         else
+         {
+            return false;
+         }
+      }
+      catch(SQLException sqle)
+      {         
+         throw new DLException(sqle, sqle.getMessage());
+      }
+      
+   }
+   
+   public boolean endTrans() throws DLException
+   {
+      try
+      {
+         if(connection != null && !connection.getAutoCommit())
+         {
+            connection.commit(); 
+            connection.setAutoCommit(true);
+            return true;
+         }
+         else
+         {
+            return false;
+         }
+      }
+      catch(SQLException sqle)
+      {
+         throw new DLException(sqle, sqle.getMessage());
+      } 
+   }
+   
+   public boolean rollbackTrans() throws DLException
+   {
+      try
+      {
+         if(connection != null)
+         {
+            connection.rollback();
+            return true;
+         }
+         else
+         {
+            return false;
+         }
+      }
+      catch(SQLException sqle)
+      {
+         throw new DLException(sqle, sqle.getMessage());
+      } 
+   }
+
+
 
 
 }

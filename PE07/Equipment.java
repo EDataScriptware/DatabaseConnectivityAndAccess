@@ -2,7 +2,7 @@
    Name: Edward Riley
    Professor: Stephen Zilora
    Course: Database Connectivity and Access
-   Date: Feburary 26, 2020
+   Date: April 03, 2020  
 */
 
 import java.sql.*;
@@ -121,7 +121,7 @@ public class Equipment
    public void put() throws DLException // put method - changes the data
    {
       Connection connection = msd.connect();
-         String query = "UPDATE equipment SET EquipID = ?, EquipmentName = ?, EquipmentDescription = ?, EquipmentCapacity = ? WHERE EquipID = ?;";
+      String query = "UPDATE equipment SET EquipID = ?, EquipmentName = ?, EquipmentDescription = ?, EquipmentCapacity = ? WHERE EquipID = ?;";
       
       ArrayList<String> list = new ArrayList<String>();
       
@@ -149,7 +149,7 @@ public class Equipment
       list.add(getEquipmentName());
       list.add(getEquipmentDescription());
       list.add(getEquipmentCapacity() + ""); // change to string
-
+   
       record = msd.setData(query, list);
       
      // msd.close(connection);
@@ -217,6 +217,60 @@ public class Equipment
       SQL.getData("SELECT * FROM equipment");
       System.out.println("\n");
       msd.close(connection); 
+   }
+
+
+   public void swap(int _equipmentID) throws DLException
+   {
+      msd = new MySQLDatabase();
+      Connection connection = msd.connect();
+   
+      try
+      {
+         if(msd.startTrans())
+         { 
+            String currentName = this.getEquipmentName() + "";
+            
+            String queryOne = "SELECT * FROM equipment WHERE equipID = ?;";
+            ArrayList<String> arrayListOne = new ArrayList<String>();
+            arrayListOne.add( _equipmentID + ""); //makes it a string
+            ArrayList<ArrayList<String>> twoDimensionalArray = msd.getData(queryOne, arrayListOne);
+            //-----------------------------------------------//
+            ArrayList<String> list = twoDimensionalArray.get(0);
+            String newEquipmentName = list.get(1);
+            setEquipmentName(newEquipmentName);
+            //-----------------------------------------------//
+            String queryTwo = "UPDATE equipment SET EquipmentName = ? WHERE EquipID = ?";
+            ArrayList<String> arrayListTwo = new ArrayList<String>();
+            arrayListTwo.add(currentName);
+            arrayListTwo.add(_equipmentID + ""); //makes it a string
+            //-----------------------------------------------//
+            int record = msd.setData(queryTwo, arrayListTwo);
+            ArrayList<String> arrayListThree = new ArrayList<String>();
+            arrayListThree.add(newEquipmentName);
+            arrayListThree.add(getEquipmentId() + ""); // makes it a string
+            msd.setData(queryTwo, arrayListThree);
+            
+            if( record > -1 )
+            {
+               msd.endTrans();
+            }
+            else
+            {
+               msd.rollbackTrans();
+            }
+         }
+         else
+         {
+            msd.close(connection);
+         }
+      }
+      catch(Exception e)
+      {
+         msd.close(connection);
+         System.out.println(e);
+         throw new DLException(e, e.getMessage());  
+      }
    }
 
 
