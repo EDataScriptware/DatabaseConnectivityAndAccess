@@ -1,0 +1,9 @@
+Reason: Unknown - please refer to Cause below.
+Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'travel2.equipment' doesn't exist
+
+Reason: Unknown - please refer to Cause below.
+Cause: Index 0 out of bounds for length 0
+
+Reason: Unknown - please refer to Cause below.
+Cause: Index 0 out of bounds for length 0
+

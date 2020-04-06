@@ -1,5 +1,0 @@
-Tue Nov 20 23:46:20 EST 2018[[java.MySqlDatabase.connect: Could not create connection to database server. Attempted reconnect 3 times. Giving up.]]
-Wed Nov 21 00:15:40 EST 2018[[java.MySqlDatabase.getData: Table 'travel2.equipment' doesn't exist]]
-Wed Nov 21 00:15:40 EST 2018[[java.Equipment: Fetch: Table 'travel2.equipment' doesn't exist]]
-Wed Nov 21 00:17:42 EST 2018[[java.MySqlDatabase.getData: Table 'travel2.equipment' doesn't exist]]
-Wed Nov 21 00:17:42 EST 2018[[java.Equipment: Fetch: Table 'travel2.equipment' doesn't exist]]

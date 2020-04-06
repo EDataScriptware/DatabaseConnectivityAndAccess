@@ -24,7 +24,7 @@ public class MySqlDatabase
    // Default Constructor
    public MySqlDatabase(String _uri)
    {   
-      uri = _uri
+      uri = _uri;
    }
    
    // Connect method
